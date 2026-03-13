@@ -2,52 +2,111 @@
 
 Project Goal
 
-The goal of this project was to develop a predictive analytics model that can identify the likelihood of freight delivery delays based on historical logistics data. The project aims to demonstrate how machine learning can help logistics companies anticipate operational disruptions and improve delivery efficiency.
+The goal of this project is to analyze freight logistics data and build a predictive model that can identify shipments that are likely to be delayed. The project demonstrates how machine learning and data analysis can be applied to logistics operations to improve delivery reliability and operational planning.
 
 Problem Statement
 
-Freight and logistics operations frequently experience delays due to factors such as route conditions, scheduling inefficiencies, and operational bottlenecks. These delays increase operational costs and affect supply chain reliability.
-This project focuses on analyzing historical freight data to detect patterns and build a predictive model capable of identifying shipments that are at high risk of delay.
+Freight transportation is a critical part of supply chain operations, yet delivery delays frequently occur due to operational inefficiencies such as excessive idle time, long detention periods, or scheduling issues.
 
-1) Tools & Technologies Used
+This project analyzes historical shipment data including trip details, delivery events, and operational metrics to understand the key factors contributing to delivery delays and to build models that predict delay risk.
 
-Python
+Dataset Overview
 
-Pandas
++ The project integrates multiple logistics datasets:
++ Loads dataset – shipment level information
++ Trips dataset – trip performance metrics
++ Delivery events dataset – scheduled and actual delivery timestamps
 
-NumPy
+These datasets are merged using load_id and trip_id to construct a comprehensive operational dataset.
 
-Matplotlib
+Tools & Technologies Used
 
-Scikit-learn
++ Python
++ Pandas
++ NumPy
++ Matplotlib
++ Seaborn
++ Scikit-learn
++ Jupyter Notebook
 
-Jupyter Notebook
+Data Processing & Feature Engineering
+
+Several features were engineered to improve analysis and predictive modeling:
+Time-based features:
++	Scheduled hour
++	Day of week
++	Month
++	Weekend indicator
+
+Operational features:
++ Revenue per mile
++ Calculated fuel efficiency (MPG)
++ Idle time ratio
++ Distance buckets
++ Detention time buckets
+
+The project also calculates delivery delay hours by comparing scheduled and actual delivery timestamps.
+
+Exploratory Data Analysis
+
+EDA was conducted to understand patterns contributing to delivery delays, including:
++ Delay distribution across trips
++ Delay probability by distance bucket
++ Delay probability by idle time ratio
++ Delay probability by detention time
+
+Machine Learning Models
+
+Two classification models were implemented to predict delayed deliveries.
+Logistic Regression
++ Features were scaled using StandardScaler
++ Model trained to classify delayed vs on-time shipments
+
+Random Forest Classifier
++ Used to capture nonlinear relationships between operational features and delays
++ Feature importance analysis was conducted to identify the most influential predictors
+
+Key Insights
+
+The analysis revealed several operational patterns contributing to delays:
++ Higher detention time significantly increases the probability of delay
++ Trips with higher idle ratios tend to experience operational inefficiencies
++ Longer distance trips show varying delay patterns depending on operational factors
++ Certain operational features strongly influence delay prediction
+
+Operational Analytics Extensions
+
+Additional analytical components were developed to simulate real-world logistics analytics systems.
+
+Route Risk Scoring
+
+Routes were analyzed based on historical delay rates and categorized into:
++ Low Risk
++ Medium Risk
++ High Risk
+
+This allows logistics planners to identify routes with higher delay probability.
+
+Driver Performance Ranking
+
+Driver performance was evaluated based on:
++ Number of trips completed
++ Average delay rate
++ Average idle time
+
+Drivers were ranked using a performance score to identify operational efficiency.
+
+Logistics KPI Dashboard
+
+Key operational metrics were calculated and visualized:
++ Total number of trips
++ Overall delay rate
++ Average trip distance
++ Average detention time
+
+These metrics help provide a quick overview of logistics system performance.
 
 
-2) Key Steps Performed
+Business Impact
 
-Data cleaning and preprocessing of freight shipment records
-
-Exploratory Data Analysis (EDA) to identify delay patterns
-
-Feature selection and transformation
-
-Model development using machine learning algorithms
-
-Model evaluation and prediction of delay probabilities
-
-
-
-3) Key Insights
-
-Certain routes and shipping conditions show higher probabilities of delays.
-
-Historical shipment patterns reveal operational inefficiencies that can be predicted using data models.
-
-Machine learning models can identify high-risk shipments before they occur.
-
-
-
-4) Business Impact
-
-Predictive analytics can help logistics companies proactively manage delivery schedules by identifying shipments likely to be delayed. This allows organizations to adjust routes, improve planning, and minimize disruptions across supply chains.
+The project demonstrates how predictive analytics can help logistics organizations proactively manage delivery operations. By identifying high-risk routes, inefficient driver patterns, and operational bottlenecks, companies can improve planning, reduce delays, and enhance overall supply chain efficiency.
